@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+
+
+.sfondo {
+    width: 100%;
+    height: 15vh;
+    background-color: grey;
+}
+
+
+.appl {
+    position: relative;
+    width: 80%;
+    height: 94%;
+    top: -11%;
+    left: 10%;
+    background-color: white;
+}
+
+.img-chat {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+i {
+    color: gray;
+}
+
+.ricevi {
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.azzurro {
+    color: lightblue;
+}
+
+#ricevi-notifiche {
+    background-color: lightblue;
+}
+
+#chat img {
+    width: 100%;
+    object-position: cover;
+}
+
