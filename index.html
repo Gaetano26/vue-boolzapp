@@ -57,12 +57,18 @@
                         <!-- tutte le chat -->
                         <div id="all-chat">
                             <ul class="list-unstyled">
-                                <li class="box-chat d-flex align-items-center mb-2" v-for="contact in contacts">
-                                    <img class="img-chat" :src="contact.avatar" alt="">
+                                <li class="box-chat d-flex align-items-center  mb-2" v-for="(contact, index) in contacts" :key="index" @click="choseImg(index)">
+                                    <img class="img-chat" :src="contact.avatar" :alt="contact.name">
                                     <div class="d-flex justify-content-between w-100">
                                         <div class="d-flex flex-column">
-                                            <p class="m-0 fw-bold">{{contact.name}}</p>
-                                            <p class="m-0 fs-6">Ultimo messaggio inviato</p>
+                                            <p class="m-0 ps-1 fw-bold">{{contact.name}}</p>
+                                            <template v-for="(mess, index) in contact.messages">
+ 
+                                              <p class="m-0 fs-6 ps-1" v-if="index === contact.messages.length - 1">
+                                                  {{mess.message}}
+                                              </p>
+                                                 
+                                            </template>
                                         </div>
                                         <div>
                                             <p>12.00</p>
@@ -80,8 +86,17 @@
                     <!-- info chat selezionata -->
                     <div id="utente-selezionato" class="col-8 p-0 d-flex flex-column h-100">
                             <div id="contatto" class="d-flex justify-content-between align-items-center px-3">
-                                <div class="py-3">
-                                   b
+                                <div>
+                                    <div class="d-flex align-items-center">
+                                        <div class="cont-img py-2">
+                                           <img class="img-chat" :src="contacts[activeIndex].avatar" :alt="contacts[activeIndex].name" id="io">
+                                        </div>
+                                        <div class="d-flex flex-column m-0 h-25">
+                                            <span class="ms-1 fw-bold">{{contacts[activeIndex].name}}</span>
+                                            <span class="ms-1">ultimo accesso oggi alle 12:00</span>
+                                        </div>
+                                      
+                                    </div>
                                 </div>
                                 <div class="d-flex align-items-center gap-3">
                                     <i class="fa-solid fa-magnifying-glass fs-5"></i>
@@ -97,7 +112,7 @@
                                         <div class="mex-inv rounded d-flex align-items-center ps-3">dammi 3 parole</div>
                                     </div>
                                     <div id="ricevuti" class="w-100 d-flex mt-3 ps-5">
-                                        <div class="mex-ric rounded d-flex align-items-center ps-3">Porco Del Signore</div>
+                                        <div class="mex-ric rounded d-flex align-items-center ps-3">dammi da mangiare</div>
                                     </div>
                                 </div>
                             </div>

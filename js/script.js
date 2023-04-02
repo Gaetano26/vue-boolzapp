@@ -173,11 +173,14 @@ createApp({
                         }
                     ],
                 }
-            ]
+            ],
+            activeIndex: 0,
         }
     },
     methods: {
-
+        choseImg (index) {
+            this.activeIndex = index 
+        }
     }
 
 }).mount('#app')
