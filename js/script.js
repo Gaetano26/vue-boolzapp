@@ -177,6 +177,8 @@ createApp({
             activeIndex: 0,
             searchChat: '',
             filteredChat: '',
+            textChat: '',
+        
         }
     },
     methods: {
@@ -194,9 +196,34 @@ createApp({
                         }      
                 })
             }
+        },
 
+        recMex(){
+                let hours = new Date().getHours();
+                let minutes = new Date().getMinutes();
+                const recMessage = {
+                    date: hours + ":" + minutes,
+                    message: 'Ciao Stallone',
+                    status: 'received'
+                }
+                this.contacts[this.activeIndex].messages.push(recMessage);
+        },
 
-    }
+        addMex(){
+            if (this.textChat != ''){
+                let hours = new Date().getHours();
+                let minutes = new Date().getMinutes();
+                const newMessage = {
+                    date: hours + ":" + minutes,
+                    message: this.textChat,
+                    status: 'sent'
+                }
+                this.contacts[this.activeIndex].messages.push(newMessage);
+                this.textChat = '';
+                setTimeout(this.recMex, 3000)
+
+           }
+        }
     
   }
 
