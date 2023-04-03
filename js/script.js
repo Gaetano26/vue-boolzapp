@@ -175,12 +175,27 @@ createApp({
                 }
             ],
             activeIndex: 0,
+            searchChat: '',
+            filteredChat: '',
         }
     },
     methods: {
         choseImg (index) {
             this.activeIndex = index 
         }
+    },
+    filterChat(){
+        
+        if (this.searchChat === ''){
+            this.filteredChat = this.contacts;
+        } else {
+            this.filteredChat = this.contacts.filter(contact => {
+                if (contact.name.toLowerCase().includes(this.searchChat.toLowerCase()) || contact.messages.some(text => text.message.toLowerCase().includes(this.searchChat.toLowerCase()))) {
+                  return true;
+                }      
+        })
     }
+    },
+
 
 }).mount('#app')

@@ -51,13 +51,13 @@
                          <!-- ricerca -->
                         <div id="barra-lat" class="py-2 ps-3 d-flex gap-3">
                             <button class="btn btn-outline-primary border-0"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input class="w-75 h-100 border-0" type="text" name="barra-lat" id="barra-lat" placeholder="Cerca o inizia una nuova chat">
+                            <input class="w-75 h-100 border-0 form-control" type="text" name="barra-lat" id="barra-lat" placeholder="Cerca o inizia una nuova chat" @input="filterChat()" v-moder="searchChat">
 
                         </div>
                         <!-- tutte le chat -->
                         <div id="all-chat">
                             <ul class="list-unstyled">
-                                <li class="box-chat d-flex align-items-center  mb-2" v-for="(contact, index) in contacts" :key="index" @click="choseImg(index)">
+                                <li class="box-chat d-flex align-items-center  mb-2" v-for="(contact, index) in (filteredChat === '' ? contacts : filteredChat)" :key="index" @click="choseImg(index)">
                                     <img class="img-chat" :src="contact.avatar" :alt="contact.name">
                                     <div class="d-flex justify-content-between w-100">
                                         <div class="d-flex flex-column">
@@ -93,7 +93,7 @@
                                         </div>
                                         <div class="d-flex flex-column m-0 h-25">
                                             <span class="ms-1 fw-bold">{{contacts[activeIndex].name}}</span>
-                                            <span class="ms-1">ultimo accesso oggi alle 12:00</span>
+                                            <span class="ms-1">Ultimo accesso:{{contacts[activeIndex].messages[contacts[activeIndex].messages.length -1].date}}</span>
                                         </div>
                                       
                                     </div>
@@ -106,14 +106,13 @@
                             </div>
                             <!-- chat selezionata -->
                             <div id="chat" class="flex-grow-1">
-                                <div class="h-100 w-100">
-                                    <div id="inviati" class="w-100 d-flex flex-column align-items-end gap-3 mt-5 pe-5">
-                                        <div class="mex-inv rounded d-flex align-items-center ps-3">hey</div>
-                                        <div class="mex-inv rounded d-flex align-items-center ps-3">dammi 3 parole</div>
+                                <div class="d-flex flex-column" v-for="(msg, index) in contacts[activeIndex].messages" :key="activeIndex">
+                                    <div class="mex" :class="msg.status">
+                                        <span>{{msg.message}}</span><br>
+                                        <div class="text-small text-end">{{msg.date}}</div>
+
                                     </div>
-                                    <div id="ricevuti" class="w-100 d-flex mt-3 ps-5">
-                                        <div class="mex-ric rounded d-flex align-items-center ps-3">dammi da mangiare</div>
-                                    </div>
+                                  
                                 </div>
                             </div>
                             <!-- barra per scrivere il messaggio -->

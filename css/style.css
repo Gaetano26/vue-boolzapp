@@ -101,15 +101,30 @@ i {
     overflow-y: scroll;
 }
 
-.mex-inv {
-    width: 280px;
-    height: 50px;
-    background-color: #d5f9ba;
+
     
+.mex {
+    max-width: 300px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 10px;
 }
 
-.mex-ric {
-    width: 280px;
-    height: 50px;
+.sent {
+    background-color: #d5f9ba;
+    align-self: flex-end;
+    margin-right: 20px;
+    margin-top: 15px;
+}
+
+.received {
     background-color: #ffffff;
+    align-self: flex-start;
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.text-small {
+    font-size: 10px;
+    
 }
