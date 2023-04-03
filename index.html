@@ -51,7 +51,7 @@
                          <!-- ricerca -->
                         <div id="barra-lat" class="py-2 ps-3 d-flex gap-3">
                             <button class="btn btn-outline-primary border-0"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input class="w-75 h-100 border-0 form-control" type="text" name="barra-lat" id="barra-lat" placeholder="Cerca o inizia una nuova chat" @input="filterChat()" v-moder="searchChat">
+                            <input class="w-75 h-100 border-0 form-control" type="text" name="barra-lat" id="barra-lat" placeholder="Cerca o inizia una nuova chat" @input="filterChat()" v-model="searchChat">
 
                         </div>
                         <!-- tutte le chat -->
