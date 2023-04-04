@@ -178,6 +178,7 @@ createApp({
             searchChat: '',
             filteredChat: '',
             textChat: '',
+            chatActive: false
         
         }
     },
@@ -234,6 +235,9 @@ createApp({
                 this.scrollMsg();
 
            }
+        },
+        showChat () {
+            this.chatActive = !this.chatActive
         }
     
   }

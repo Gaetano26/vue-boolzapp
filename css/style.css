@@ -28,11 +28,9 @@ body {
 .appl {
     position: absolute;
     height: 92vh;
-    width: 80vw;
     top: 4%;
     left: 10%;
     background-color: white;
-    min-width: 800px;
     
 }
 
@@ -128,12 +126,15 @@ i {
 .text-mex {
     font-size: 12px;
 }
-
+ ul {
+    min-width: 300px;
+ }
 
 .text-small {
     font-size: 10px;
 }
 
-.user-c {
-    max-width: 230px;
+.bck {
+    cursor: pointer;
 }
+
