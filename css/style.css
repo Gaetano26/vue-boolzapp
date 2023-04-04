@@ -138,3 +138,6 @@ i {
     cursor: pointer;
 }
 
+#utente-selezionato {
+    height: 100%;
+}
