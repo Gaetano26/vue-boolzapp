@@ -112,7 +112,7 @@ createApp({
                 {
                     id:6,
                     name: 'Claudia',
-                    avatar: './img/avatar_5.jpg',
+                    avatar: './img/avatar_6.jpg',
                     visible: true,
                     messages: [
                         {
@@ -185,6 +185,14 @@ createApp({
         choseImg (index) {
             this.activeIndex = index 
         },
+
+        scrollMsg(){
+            this.$nextTick(() => {
+                this.$refs.texts[this.$refs.texts.length - 1].scrollIntoView({behavior: 'smooth'})
+            })
+            
+        },
+
         filterChat(){
                 
                 if (this.searchChat === ''){
@@ -203,10 +211,11 @@ createApp({
                 let minutes = new Date().getMinutes();
                 const recMessage = {
                     date: hours + ":" + minutes,
-                    message: 'Ciao Stallone',
+                    message: 'Ok',
                     status: 'received'
                 }
                 this.contacts[this.activeIndex].messages.push(recMessage);
+                this.scrollMsg();
         },
 
         addMex(){
@@ -219,8 +228,10 @@ createApp({
                     status: 'sent'
                 }
                 this.contacts[this.activeIndex].messages.push(newMessage);
+                this.scrollMsg();
                 this.textChat = '';
                 setTimeout(this.recMex, 3000)
+                this.scrollMsg();
 
            }
         }

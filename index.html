@@ -51,7 +51,7 @@
                          <!-- ricerca -->
                         <div id="barra-lat" class="py-2 ps-3 d-flex gap-3">
                             <button class="btn btn-outline-primary border-0"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            <input class="w-75 h-100 border-0 form-control" type="text" name="barra-lat" id="barra-lat" placeholder="Cerca o inizia una nuova chat" @input="filterChat()" v-model="searchChat">
+                            <input class="w-75 h-100 border-0 form-control" type="text" name="barra-lat" id="barra-lat" placeholder="Cerca o inizia una nuova chat" @input="filterChat()" v-model.trim="searchChat">
 
                         </div>
                         <!-- tutte le chat -->
@@ -60,11 +60,11 @@
                                 <li class="box-chat d-flex align-items-center  mb-2" v-for="(contact, index) in (filteredChat === '' ? contacts : filteredChat)" :key="index" @click="choseImg(index)">
                                     <img class="img-chat" :src="contact.avatar" :alt="contact.name">
                                     <div class="d-flex justify-content-between w-100">
-                                        <div class="d-flex flex-column">
+                                        <div class="d-flex flex-column user-c">
                                             <p class="m-0 ps-1 fw-bold">{{contact.name}}</p>
                                             <template v-for="(mess, index) in contact.messages">
  
-                                              <p class="m-0 text-mex  ps-1" v-if="index === contact.messages.length - 1">
+                                              <p class="m-0 text-mex ps-1" v-if="index === contact.messages.length - 1">
                                                   {{mess.message}}
                                               </p>
                                                  
@@ -106,8 +106,8 @@
                             </div>
                             <!-- chat selezionata -->
                             <div id="chat" class="flex-grow-1">
-                                <div class="d-flex flex-column" v-for="(msg, index) in contacts[activeIndex].messages" :key="activeIndex">
-                                    <div class="mex" :class="msg.status">
+                                <div ref="texts" class="d-flex flex-column" v-for="(msg, index) in contacts[activeIndex].messages" :key="activeIndex">
+                                    <div class="mex rounded" :class="msg.status">
                                         <span>{{msg.message}}</span><br>
                                         <div class="text-small text-end">{{msg.date}}</div>
 
@@ -118,7 +118,7 @@
                             <!-- barra per scrivere il messaggio -->
                             <div id="barra-bot" class="d-flex justify-content-center align-items-center gap-5 py-2">
                                 <i class="fa-regular fa-face-smile fs-5"></i>
-                                <input class="w-75  py-3 ps-2 rounded border-0 form-control" type="text" name="barra-lat" id="barra-lat" placeholder="scrivi messaggio" v-model="textChat" @keyup.enter="addMex()">
+                                <input class="w-75  py-3 ps-2 rounded border-0 form-control" type="text" name="barra-lat" id="barra-lat" placeholder="scrivi messaggio" v-model.trim="textChat" @keyup.enter="addMex()">
                                 <i class="fa-solid fa-microphone-slash fs-5"></i>
                             </div>
                             

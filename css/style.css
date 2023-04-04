@@ -104,6 +104,7 @@ i {
 
     
 .mex {
+    min-width: 100px;
     max-width: 300px;
     width: fit-content;
     height: fit-content;
@@ -131,4 +132,8 @@ i {
 
 .text-small {
     font-size: 10px;
+}
+
+.user-c {
+    max-width: 230px;
 }
