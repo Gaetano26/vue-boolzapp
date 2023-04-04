@@ -183,17 +183,18 @@ createApp({
         }
     },
     methods: {
+        //funzione per collegare l'indice dell'utente selezionato con quello dell'array degli utenti cosi da poterli selezionare
         choseImg (index) {
             this.activeIndex = index 
         },
-
+        //funzione che abbassa automaticamente la barra di scorrimento ogni volta che un messagio viene inviato o ricevuto
         scrollMsg(){
             this.$nextTick(() => {
                 this.$refs.texts[this.$refs.texts.length - 1].scrollIntoView({behavior: 'smooth'})
             })
             
         },
-
+        //funzione per filtrare la chat cosi da selezionare la chat scrivendo nella casella di input
         filterChat(){
                 
                 if (this.searchChat === ''){
@@ -206,7 +207,7 @@ createApp({
                 })
             }
         },
-
+        //funzione per creare il messaggio ricevuto
         recMex(){
                 let hours = new Date().getHours();
                 let minutes = new Date().getMinutes();
@@ -218,7 +219,7 @@ createApp({
                 this.contacts[this.activeIndex].messages.push(recMessage);
                 this.scrollMsg();
         },
-
+        //funzione per creare il messaggio da inviare con il testo digitato nella casella di input + set timeout per il messaggio da ricevere subito dopo
         addMex(){
             if (this.textChat != ''){
                 let hours = new Date().getHours();
@@ -236,6 +237,7 @@ createApp({
 
            }
         },
+        //funzione che serve da toggle su mobile per mostrare la chat selezionata cliccando sull'utente e per tornare indietro quando clicco sulla freccia
         showChat () {
             this.chatActive = !this.chatActive
         }
